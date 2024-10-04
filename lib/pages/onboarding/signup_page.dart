@@ -4,6 +4,7 @@ import 'package:geeksynergymovie/controller/user_controller.dart';
 import 'package:geeksynergymovie/models/user_model.dart';
 import 'package:geeksynergymovie/services/validation_service.dart';
 import 'package:geeksynergymovie/utils/color.dart';
+import 'package:geeksynergymovie/utils/custom_drop_drown.dart';
 import 'package:geeksynergymovie/utils/custom_textfield.dart';
 import 'package:geeksynergymovie/utils/text_util.dart';
 import 'package:provider/provider.dart';
@@ -36,6 +37,45 @@ class _SignUpPageState extends State<SignUpPage> {
   bool _isCheckboxChecked = false; // Track checkbox state
 
   // Function to open the link
+  String? selectProfession;
+
+  // Dropdown for Code Validity
+  Widget _buildDropdownFieldCodeValidity(String label, double sH, double sW) {
+    List<String> professionOptions = [
+      'Intern',
+      'App Developer',
+      'Web Developer',
+      'UI/UX Designer',
+      'Data Scientist',
+    ];
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        txt(label, size: sH * 0.018, weight: FontWeight.w500),
+        SizedBox(height: sH * 0.01),
+        SizedBox(
+          width: sW,
+          height: sH * 0.065,
+          child: StatefulBuilder(
+            builder: (context, setModalState) {
+              return CustomDropdownButton2(
+                hint: '--Select Profession--',
+                value: selectProfession,
+                dropdownItems: professionOptions,
+                dropdownWidth: sW * 0.92,
+                onChanged: (value) {
+                  setModalState(() {
+                    selectProfession = value;
+                  });
+                },
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
 
   Future<void> _submit(String name, String phoneNumber, String email,
       String password, String confirmPassword) async {
@@ -129,7 +169,7 @@ class _SignUpPageState extends State<SignUpPage> {
         phoneNumber: phoneNumber,
         email: email,
         password: password,
-        profession: 'User', // Default profession or ask in the form
+        profession: selectProfession!, // Default profession or ask in the form
       );
 
       final userController =
@@ -195,6 +235,11 @@ class _SignUpPageState extends State<SignUpPage> {
                           validate: phoneNumberValid,
                           validatorText: _phoneNumberErrorText,
                         ),
+                        SizedBox(
+                          height: sH * 0.02,
+                        ),
+                        _buildDropdownFieldCodeValidity(
+                            'Profession', sH, sW), // Dropdown for Code Validity
                         SizedBox(
                           height: sH * 0.02,
                         ),
