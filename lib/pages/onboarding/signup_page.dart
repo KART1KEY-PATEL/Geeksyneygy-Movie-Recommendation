@@ -61,59 +61,59 @@ class _SignUpPageState extends State<SignUpPage> {
     Map<String, dynamic> validateConfirmPassword =
         ValidationService.validateConfirmPassword(password, confirmPassword);
 
-    // if (validatePhoneNumber['verified']) {
-    //   setState(() {
-    //     phoneNumberValid = true;
-    //   });
-    // } else {
-    //   setState(() {
-    //     phoneNumberValid = false;
-    //     _phoneNumberErrorText = validateEmail['validatorText'];
-    //   });
-    // }
+    if (validatePhoneNumber['verified']) {
+      setState(() {
+        phoneNumberValid = true;
+      });
+    } else {
+      setState(() {
+        phoneNumberValid = false;
+        _phoneNumberErrorText = validateEmail['validatorText'];
+      });
+    }
 
-    // if (validateName['verified']) {
-    //   setState(() {
-    //     nameValid = true;
-    //   });
-    // } else {
-    //   setState(() {
-    //     nameValid = false;
-    //     _nameErrorText = validateEmail['validatorText'];
-    //   });
-    // }
-    // if (validateEmail['verified']) {
-    //   setState(() {
-    //     _emailValid = true;
-    //   });
-    // } else {
-    //   setState(() {
-    //     _emailValid = false;
-    //     _emailErrorText = validateEmail['validatorText'];
-    //   });
-    // }
+    if (validateName['verified']) {
+      setState(() {
+        nameValid = true;
+      });
+    } else {
+      setState(() {
+        nameValid = false;
+        _nameErrorText = validateEmail['validatorText'];
+      });
+    }
+    if (validateEmail['verified']) {
+      setState(() {
+        _emailValid = true;
+      });
+    } else {
+      setState(() {
+        _emailValid = false;
+        _emailErrorText = validateEmail['validatorText'];
+      });
+    }
 
-    // if (validatePassword['verified']) {
-    //   setState(() {
-    //     _passwordValid = true;
-    //   });
-    // } else {
-    //   setState(() {
-    //     _passwordValid = false;
-    //     _passwordErrorText = validatePassword['validatorText'];
-    //   });
-    // }
+    if (validatePassword['verified']) {
+      setState(() {
+        _passwordValid = true;
+      });
+    } else {
+      setState(() {
+        _passwordValid = false;
+        _passwordErrorText = validatePassword['validatorText'];
+      });
+    }
 
-    // if (validateConfirmPassword['verified']) {
-    //   setState(() {
-    //     _confirmPasswordValid = true;
-    //   });
-    // } else {
-    //   setState(() {
-    //     _confirmPasswordValid = false;
-    //     _confirmPasswordErrorText = validateConfirmPassword['validatorText'];
-    //   });
-    // }
+    if (validateConfirmPassword['verified']) {
+      setState(() {
+        _confirmPasswordValid = true;
+      });
+    } else {
+      setState(() {
+        _confirmPasswordValid = false;
+        _confirmPasswordErrorText = validateConfirmPassword['validatorText'];
+      });
+    }
 
     if (_emailValid &&
         _passwordValid &&
@@ -145,31 +145,6 @@ class _SignUpPageState extends State<SignUpPage> {
         isLoading = false;
       });
     }
-
-    // if (_emailValid && _passwordValid && _confirmPasswordValid) {
-    //   setState(() {
-    //     isLoading = true;
-    //   });
-    //   final userController =
-    //       Provider.of<UserController>(context, listen: false);
-    //   Map<String, dynamic> response = await _userService
-    //       .signUpWithEmailPassword(email, password, userController);
-    //   if (response['success']) {
-    //     userController.setEmail(email);
-    //     Navigator.pushNamed(context, '/firstOnboardingPage');
-    //   } else {
-    //     print(txt(response['error']));
-    //     var snackBar = SnackBar(
-    //         backgroundColor: AppColors.errorColor,
-    //         content: txt(response['error'], color: AppColors.primaryTextColor));
-    //     ScaffoldMessenger.of(context).showSnackBar(
-    //       snackBar,
-    //     );
-    //   }
-    //   setState(() {
-    //     isLoading = false;
-    //   });
-    // }
   }
 
   @override

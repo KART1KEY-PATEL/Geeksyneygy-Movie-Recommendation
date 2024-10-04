@@ -77,7 +77,7 @@ class HomePage extends StatelessWidget {
                 vertical: sH * 0.02,
               ),
               decoration: BoxDecoration(
-                color: Colors.grey[200],
+                color: AppColors.secondaryButtonColor,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Center(
